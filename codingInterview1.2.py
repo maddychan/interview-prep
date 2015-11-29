@@ -9,10 +9,12 @@ def permutation(s1:str,s2:str):
     store = defaultdict(int)
     if len(s1) != len(s2):
         return False
+    #throwing values in 
     for a in s1:
-        store[a] = 1
+        store[a] += 1
     for a in s2:
-        if store[a] == 0:
+        store[a] -=1
+        if store[a] < 0:
             return False
     return True
 
@@ -22,6 +24,7 @@ def permutation(s1:str,s2:str):
 print(permutation("hello", "elloh"))
 print(permutation("hello", ""))
 print(permutation("", ""))
+print(permutation("aabb","aaab"))
 #print(permutation(1, ""))      #to test assertions
 #print(permutation("",1))
 

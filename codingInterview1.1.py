@@ -2,6 +2,7 @@
 #Cracking the Coding Interview #1.1
 #Implement an algorithm to determine if a string has all unique characters.
 #What if you cannot use additional data structures?
+
 from collections import defaultdict
 
 
@@ -12,11 +13,10 @@ def unique(s:str):
         for j in range(i+1,len(s)):
             if s[i] == s[j]:
                 return False
-
     return True
 
 
-#this is the O(N) solution that takes O(N) space
+#this is the O(N) solution that takes O(N) extra space
 def unique2(s:str):
     assert type(s) == str, "Input Type must be String"
     store = defaultdict(int)
@@ -25,9 +25,6 @@ def unique2(s:str):
             return False
         store[a] = 1
     return True
-
-
-
 
 
 
