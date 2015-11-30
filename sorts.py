@@ -5,12 +5,12 @@
 
 from collections import defaultdict
 
-def gtInt(a:int,b:int):
+def gtInt(a:int,b:int) -> bool:
     return a > b
 
-#selection sort
+#selection sort - mutates list
 
-def selection(l: list, gt):
+def selection(l: list, gt) -> None:
     for i in range(len(l)):
         minIndex = i
         for j in range(i+1, len(l)):
@@ -18,9 +18,9 @@ def selection(l: list, gt):
                 minIndex = j
         l[minIndex], l[i] = l[i], l[minIndex]
 
-#insertion sort
+#insertion sort - mutates list
 
-def insertion(l:list, gt):
+def insertion(l:list, gt) -> None:
     for i in range(1,len(l)):
         comp_index, current = i-1, i
         while comp_index >=0 and gt(l[comp_index],l[current]):
@@ -29,9 +29,9 @@ def insertion(l:list, gt):
             current -=1
 
 
-#merge sort
+#merge sort - returns sorted list
 
-def merge(l: list, gt):
+def merge(l: list, gt) -> list:
     #if base case of one element, return that element
     if len(l) == 1:
         return l
@@ -53,9 +53,9 @@ def merge(l: list, gt):
     answer.append(front[0] if len(front) == 1 else back[0])
     return answer
 
-#bucket sort 
+#bucket sort - returns sorted list
 
-def bucket(l:list):
+def bucket(l:list) -> list:
     answer_dict, answer = defaultdict(int), []
     for a in l:
         answer_dict[a] +=1
@@ -63,6 +63,16 @@ def bucket(l:list):
         for i in range(answer_dict[a]):
             answer.append(a)
     return answer
+
+#quick sort - returns sorted list - not done yet
+
+##def quick(l:list, gt):
+##    if len(l) == 1:
+##        return l
+##    pivot = l[-1]
+##    for i in range(len(l)):
+##        if gt(
+                   
 
 #l = [3,2,5,4,2,3,5,4,3,1]
 l = ['a','b','c','y','t','e','j']
