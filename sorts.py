@@ -66,17 +66,28 @@ def bucket(l:list) -> list:
 
 #quick sort - returns sorted list - not done yet
 
-##def quick(l:list, gt):
-##    if len(l) == 1:
-##        return l
-##    pivot = l[-1]
-##    for i in range(len(l)):
-##        if gt(
+def quick(l:list, gt):
+    if len(l) == 1 or len(l) == 0:
+        return l
+    pivot = l[-1]
+    start = 0
+    end = len(l)-1
+    while(start != end):
+        while gt(pivot,l[start]) and start < end:
+            start+=1
+        while gt(l[end],pivot) and end > start:
+            end-=1
+        l[start],l[end] = l[end],l[start]
+    answer = quick(l[0:start],gt)
+    answer.append(l[start])
+    answer.extend(quick(l[end+1:],gt))
+    return answer
                    
 
 #l = [3,2,5,4,2,3,5,4,3,1]
-l = ['a','b','c','y','t','e','j']
+l = [3,2,4,5,1,6,9,7,8]
+#l = ['a','b','c','y','t','e','j']
 #print(merge(l,gtInt))
-print(bucket(l))
+print(quick(l,gtInt))
 #insertion(l,gtInt)
 #print(l)

@@ -47,4 +47,28 @@ printList(a)
 printList(reverse(a))
 
 #I looked at the solution on InterviewCake after doing this, and their
-#implementation is simpler. Oh well, I'll try harder next time. 
+#implementation is simpler to read. Oh well, I'll try harder next time.
+
+'''
+    solution from InterviewCake, for my own reference
+def reverse(head_of_list):
+    current = head_of_list
+    previous = None
+    next = None
+    
+    # until we have 'fallen off' the end of the list
+    while current:
+        
+        # copy a pointer to the next element
+        # before we overwrite current.next
+        next = current.next
+        
+        # reverse the 'next' pointer
+        current.next = previous
+        
+        # step forward in the list
+        previous = current
+        current = next
+    
+    return previous
+'''

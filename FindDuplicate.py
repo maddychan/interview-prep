@@ -19,7 +19,7 @@ def findDuplicate(l: list):
     while index < len(l)-1:
         if l[index] == l[index+1]:
             answer.append(l[index])
-            while l[index] == answer[-1]:
+            while index < len(l) and l[index] == answer[-1]:
                 index+=1
         else:
             index += 1
