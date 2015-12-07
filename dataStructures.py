@@ -4,10 +4,7 @@
 #these are just rough starts, not optimized yet and don't have all
 #attribute methods yet
 
-class LN:
-    def __init__(self,var = 0, nextnode = None):
-        self.value = var
-        self.nextNode = nextnode
+from LN import LN, printList
 
         
 #list implementation of stack
@@ -20,7 +17,15 @@ class stack:
         self.stack.append(var)
 
     def pop(self):
+        assert len(self.stack) != 0, "Stack is empty"
         return self.stack.pop()
+
+    def isEmpty(self):
+        return len(self.size) == 0
+
+    def peek(self):
+        assert len(self.stack) != 0, "Stack is empty"
+        return self.stack[-1]
 
     def __str__(self):
         return 'Stack('+', '.join([str(k) for k in self.stack])+')'

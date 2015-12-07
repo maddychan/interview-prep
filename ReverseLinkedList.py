@@ -4,44 +4,36 @@
 #Your function will have one input: the head of the list.
 #Your function should return the new head of the list.
 
-
-class LinkedListNode:
-
-    def __init__(self, value):
-        self.value = value
-        self.next  = None
+from LN import LN, printList
 
 #solution in O(N) time, O(1) space
 def reverse(n):
-    if n == None or n.next == None:
+    if n == None or n.nextNode == None:
         return n
     
     currentNode = n
-    nextNode = n.next
-    nextnext = n.next.next
-    currentNode.next = None
+    nextNode = n.nextNode
+    nextnext = n.nextNode.nextNode
+    currentNode.nextNode = None
     
     #flipping the references to go the other way, ending with the new head node
     while nextnext != None:
-        nextNode.next = currentNode
+        nextNode.nextNode = currentNode
         currentNode = nextNode
         nextNode = nextnext
-        nextnext = nextNode.next
+        nextnext = nextNode.nextNode
         
-    nextNode.next = currentNode
+    nextNode.nextNode = currentNode
     return nextNode
 
-def printList(n):
-    while n != None:
-        print(n.value)
-        n = n.next
 
-a = LinkedListNode(1)
-b = LinkedListNode(2)
-c = LinkedListNode(3)
 
-a.next = b
-b.next = c
+a = LN(1)
+b = LN(2)
+c = LN(3)
+
+a.nextNode = b
+b.nextNode = c
 
 printList(a)
 printList(reverse(a))
